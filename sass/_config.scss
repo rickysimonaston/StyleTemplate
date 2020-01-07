@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Staatliches');
+// Variables
+$main-font: 'Lato', sans-serif;
+$primary-color: #c72727;
+$secondary-color: #f99500;
+$light-color: #f3f3f3;
+$dark-color: #333;
+$max-width: 1100px;
+$white-color: #fff;
+
+// set text color
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+// Create Padding and Margin properties
+$spaceamounts: (
+  5,
+  10,
+  15,
+  20,
+  25,
+  30,
+  35,
+  40,
+  45,
+  50,
+  75,
+  100
+); // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right); // Leave this variable alone
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}
